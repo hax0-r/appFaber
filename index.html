@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppFaber</title>
+    <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Docs/Style/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="bg-[#0e041e] min-h-screen pb-5">
+        <div class="flex items-center p-4 md:justify-center md:gapx-x-4 gap-x-2 gap-y-4 pt-20 flex-wrap">
+            <button onclick="filterCards('All')"
+                class="filter-btn bg-white text-black rounded-full transition-all duration-300 border-white py-2 border-2 px-5 active">All</button>
+            <button onclick="filterCards('Health Care')"
+                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">Health
+                Care</button>
+            <button onclick="filterCards('Sports')"
+                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">Sports</button>
+            <button onclick="filterCards('AI')"
+                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">AI</button>
+        </div>
+
+        <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:mt-10 mt-2 max-w-7xl w-full mx-auto p-4 gap-4 "
+            id="cardContainer">
+            <!-- Dynamic Cards -->
+        </div>
+    </div>
+
+
+
+</body>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+
+    const cards = [
+        // Sports category
+        { category: "Sports", imageUrl: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page1.html" },
+        { category: "Sports", imageUrl: "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page2.html" },
+        { category: "Sports", imageUrl: "https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page3.html" },
+        { category: "Sports", imageUrl: "https://images.pexels.com/photos/262524/pexels-photo-262524.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page4.html" },
+        { category: "Sports", imageUrl: "https://images.pexels.com/photos/341003/pexels-photo-341003.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page5.html" },
+
+        // Health Care category
+        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg?auto=compress&cs=tinysrgb&w=600", link: "healthcare-page1.html" },
+        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg?auto=compress&cs=tinysrgb&w=600", link: "healthcare-page2.html" },
+        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/5340280/pexels-photo-5340280.jpeg?auto=compress&cs=tinysrgb&w=600", link: "healthcare-page3.html" },
+        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/6195288/pexels-photo-6195288.jpeg?auto=compress&cs=tinysrgb&w=600" },
+
+        // AI category
+        { category: "AI", imageUrl: "https://images.pexels.com/photos/1072851/pexels-photo-1072851.jpeg?auto=compress&cs=tinysrgb&w=600", link: "ai-page1.html" },
+        { category: "AI", imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=600", link: "ai-page2.html" },
+        { category: "AI", imageUrl: "https://images.pexels.com/photos/23763/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600", link: "ai-page3.html" },
+        { category: "AI", imageUrl: "https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=600", link: "ai-page4.html" }
+    ];
+
+    const cardContainer = document.getElementById("cardContainer");
+
+    function displayCards(category) {
+        let filteredCards = category === "All" ? cards : cards.filter(card => card.category === category);
+
+        cardContainer.innerHTML = filteredCards.map(card => `
+            <a href="${card.link}" class="block fadeIn rounded-lg overflow-hidden">
+                <img src="${card.imageUrl}" class="w-full object-cover  hover:scale-105 duration-500 transition-all" alt="${card.category}">
+            </a>
+        `).join('');
+    }
+
+    function filterCards(category) {
+        displayCards(category);
+
+        document.querySelectorAll(".filter-btn").forEach(button => {
+            button.classList.remove("bg-white", "text-black", "active");
+            button.classList.add("bg-transparent", "text-white");
+        });
+
+        const activeButton = Array.from(document.querySelectorAll(".filter-btn")).find(btn => btn.innerText === category || (category === 'All' && btn.innerText === 'All'));
+        activeButton.classList.remove("bg-transparent", "text-white");
+        activeButton.classList.add("bg-white", "text-black", "active");
+    }
+
+    displayCards("All");
+
+    const lenis = new Lenis();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+</script>
+
+</html>
