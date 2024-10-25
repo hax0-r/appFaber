@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Docs/Style/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .button {
+        --black-700: #150435;
+        --border_radius: 9999px;
+        --transtion: 0.3s ease-in-out;
+        --offset: 2px;
+
+        cursor: pointer;
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        transform-origin: center;
+
+        padding: 1rem 2rem;
+        background-color: transparent;
+
+        border: none;
+        border-radius: var(--border_radius);
+        transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+
+        transition: transform var(--transtion);
+    }
+
+    .button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        background-color: var(--black-700);
+
+        border-radius: var(--border_radius);
+        box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+            0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+            0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
+
+        transition: all var(--transtion);
+        z-index: 0;
+    }
+
+    .button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        background-color: hsla(260 97% 61% / 0.75);
+        background-image: radial-gradient(at 51% 89%,
+                hsla(266, 45%, 74%, 1) 0px,
+                transparent 50%),
+            radial-gradient(at 100% 100%, hsla(266, 36%, 60%, 1) 0px, transparent 50%),
+            radial-gradient(at 22% 91%, hsla(266, 36%, 60%, 1) 0px, transparent 50%);
+        background-position: top;
+
+        opacity: var(--active, 0);
+        border-radius: var(--border_radius);
+        transition: opacity var(--transtion);
+        z-index: 2;
+    }
+
+    .button:is(:hover, :focus-visible) {
+        --active: 1;
+    }
+
+    .button:active {
+        transform: scale(1);
+    }
+
+    .button .dots_border {
+        --size_border: calc(100% + 2px);
+
+        overflow: hidden;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: var(--size_border);
+        height: var(--size_border);
+        background-color: transparent;
+
+        border-radius: var(--border_radius);
+        z-index: -10;
+    }
+
+    .button .dots_border::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: left;
+        transform: rotate(0deg);
+
+        width: 100%;
+        height: 2rem;
+        background-color: white;
+
+        mask: linear-gradient(transparent 0%, white 120%);
+        animation: rotate 2s linear infinite;
+    }
+
+    @keyframes rotate {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .button .sparkle {
+        position: relative;
+        z-index: 10;
+
+        width: 1.75rem;
+    }
+
+    .button .sparkle .path {
+        fill: currentColor;
+        stroke: currentColor;
+
+        transform-origin: center;
+
+        color: hsl(0, 0%, 100%);
+    }
+
+    .button:is(:hover, :focus) .sparkle .path {
+        animation: path 1.5s linear 0.5s infinite;
+    }
+
+    .button .sparkle .path:nth-child(1) {
+        --scale_path_1: 1.2;
+    }
+
+    .button .sparkle .path:nth-child(2) {
+        --scale_path_2: 1.2;
+    }
+
+    .button .sparkle .path:nth-child(3) {
+        --scale_path_3: 1.2;
+    }
+
+    @keyframes path {
+
+        0%,
+        34%,
+        71%,
+        100% {
+            transform: scale(1);
+        }
+
+        17% {
+            transform: scale(var(--scale_path_1, 1));
+        }
+
+        49% {
+            transform: scale(var(--scale_path_2, 1));
+        }
+
+        83% {
+            transform: scale(var(--scale_path_3, 1));
+        }
+    }
+
+    .button .text_button {
+        position: relative;
+        z-index: 10;
+
+        background-image: linear-gradient(90deg,
+                hsla(0 0% 100% / 1) 0%,
+                hsla(0 0% 100% / var(--active, 0)) 120%);
+        background-clip: text;
+
+        font-size: 1rem;
+        color: transparent;
+    }
+</style>
+
+<body>
+
+    <div class="bg-[#0e041e] min-h-screen p-4">
+        <div class="max-w-7xl w-full mx-auto pt-5">
+
+            <div id="introSection" class="max-w-7xl w-full mx-auto pt-5 text-white text-center">
+                <img src="https://www.quantocostaunapplicazione.com/imgs/19.png" class="max-w-[23rem] w-full mx-auto" alt="">
+                <h2 class="text-4xl font-semibold text-white">Quanto costa sviluppare la mia app?</h2>
+                <p class="text-zinc-300 pt-4 pb-5">
+                    Calcola rapidamente il costo per creare la tua app, rispondendo a queste semplici domande.
+                </p>
+                <button id="startButton" class="mx-auto bg-white border p-5">Start Now</button>
+            </div>
+
+            <div id="stageContainer" class="hidden max-w-7xl w-full mx-auto pt-5 text-white">
+                <!-- Dynamic Stage Content will appear here -->
+            </div>
+            
+            <div id="finalPrice" class="text-center text-4xl mt-10 hidden">
+                <p class="text-white">The estimated cost for your app is:</p>
+                <h2 id="priceDisplay" class="text-6xl text-[#14e2cd]">€0</h2>
+            </div>
+            
+
+            
+        </div>
+
+
+    </div>
+
+</body>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const stages = [
+    {
+        stageTitle: "Qual è la complessità dell'app che vuoi sviluppare?",
+        price: [200, 400, 600, 1000],
+        options: [
+            { imgSrc: "https://www.quantocostaunapplicazione.com/imgs/10.png", text: "Basic" },
+            { imgSrc: "https://www.quantocostaunapplicazione.com/imgs/11.png", text: "Media" },
+            { imgSrc: "https://www.quantocostaunapplicazione.com/imgs/12.png", text: "High" },
+            { imgSrc: "https://www.quantocostaunapplicazione.com/imgs/14.png", text: "Very high" }
+        ]
+    },
+    // Add remaining stages here similarly
+];
+
+let currentStage = 0;
+let totalPrice = 0;
+
+function startSurvey() {
+    document.getElementById("introSection").classList.add("hidden"); 
+    document.getElementById("stageContainer").classList.remove("hidden"); 
+    updateStage();
+}
+
+function updateStage() {
+    const stageData = stages[currentStage];
+    const stageContainer = document.getElementById("stageContainer");
+
+    stageContainer.innerHTML = `
+        <h2 class="text-2xl font-semibold text-center">${stageData.stageTitle}</h2>
+        <div class="grid grid-cols-4 gap-3 mt-4">
+            ${stageData.options.map((option, index) => `
+                <div onclick="selectOption(${index})" class="p-5 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                    <img src="${option.imgSrc}" class="w-full mx-auto" alt="${option.text}">
+                    <p class="text-center pt-3">${option.text}</p>
+                </div>`).join('')}
+        </div>
+    `;
+}
+
+function selectOption(index) {
+    totalPrice += stages[currentStage].price[index];
+    if (currentStage < stages.length - 1) {
+        currentStage++;
+        updateStage();
+    } else {
+        displayFinalPrice();
+    }
+}
+
+function goBack() {
+    if (currentStage > 0) {
+        currentStage--;
+        updateStage();
+    }
+}
+
+function displayFinalPrice() {
+    document.getElementById("stageContainer").classList.add("hidden");
+    document.getElementById("finalPrice").classList.remove("hidden");
+    document.getElementById("priceDisplay").innerText = `€ ${totalPrice}`;
+}
+
+document.getElementById("startButton").addEventListener("click", startSurvey);
+
+
+
+    const lenis = new Lenis();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+</script>
+
+</html>
