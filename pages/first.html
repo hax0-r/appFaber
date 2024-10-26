@@ -14,12 +14,27 @@
     <link rel="stylesheet" href="/Docs/Style/first.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<style>
+    .animate-custom-pulse {
+        animation: pulse 5s ease-in-out infinite; /* Change 0.5s to your desired duration */
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+</style>
+
 
 <body class="overflow-hidden">
 
 
-    <div class="w-[20rem] h-[20rem] bg-[#1f0d41] absolute top-0 rounded-full blur-3xl -translate-x-20 animate-pulse left-0"></div>
-    <div class="w-[20rem]  h-[20rem] bg-[#1f0d41] absolute bottom-0 rounded-full translate-x-20 animate-pulse blur-3xl right-0"></div>
+    <div class="w-[20rem] h-[20rem] bg-[#1f0d41] absolute top-0 rounded-full blur-3xl -translate-x-20 animate-custom-pulse  left-0"></div>
+    <div class="w-[20rem]  h-[20rem] bg-[#1f0d41] absolute bottom-0 rounded-full translate-x-20 animate-custom-pulse blur-3xl right-0"></div>
     
     <div class="bg-[#0e041e] min-h-screen p-4">
         <div class="max-w-7xl w-full mx-auto pt-5 relative">
