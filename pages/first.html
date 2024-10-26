@@ -444,11 +444,11 @@ const stages = [
         stageContainer.innerHTML = `
         <p class="text-white text-xl w-full text-center pb-8">${stageData.id} / ${stages.length}</p>
         <h2 class="text-2xl font-semibold text-center">${stageData.stageTitle}</h2>
-        <div class="grid grid-cols-4 gap-3 mt-4">
+        <div class="grid md:grid-cols-4 grid-cols-2 md:gap-3 mt-4">
             ${stageData.options.map((option, index) => `
-                <div onclick="selectOption(${index})" class="p-5 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                <div onclick="selectOption(${index})" class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
                     <img src="${option.imgSrc}" class="w-full mx-auto" alt="${option.text}">
-                    <p class="text-center pt-3">${option.text}</p>
+                    <p class="text-center pt-3 text-sm md:text-[16px]">${option.text}</p>
                 </div>`).join('')}
         </div>
     `;

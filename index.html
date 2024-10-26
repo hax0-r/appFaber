@@ -44,23 +44,23 @@
 
     const cards = [
         // Sports category
-        { category: "Sports", imageUrl: "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600", link: "sports-page1.html" },
-        { category: "Sports", imageUrl: "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Sports", imageUrl: "https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Sports", imageUrl: "https://images.pexels.com/photos/262524/pexels-photo-262524.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Sports", imageUrl: "https://images.pexels.com/photos/341003/pexels-photo-341003.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
+        { category: "Sports", imageUrl: "https://img.freepik.com/free-vector/sport-landing-page-template-with-photo_23-2148209143.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "sports-page1.html" },
+        { category: "Sports", imageUrl: "https://img.freepik.com/premium-vector/fitness-center-ads-gym-promotional-web-banner-template_1283177-213.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Sports", imageUrl: "https://img.freepik.com/premium-photo/muscular-man-doing-abs-exercise-gym-workout-photos-bodybuilder-execute-exercise-with-weight-gym_1270349-61406.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Sports", imageUrl: "https://img.freepik.com/free-psd/gym-fitness-web-banner-template_106176-710.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Sports", imageUrl: "https://img.freepik.com/premium-vector/fitness-center-ads-gym-promotional-web-banner-template_1283177-203.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
 
         // Health Care category
-        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/5340280/pexels-photo-5340280.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://images.pexels.com/photos/6195288/pexels-photo-6195288.jpeg?auto=compress&cs=tinysrgb&w=600" },
+        { category: "Health Care", imageUrl: "https://img.freepik.com/free-vector/flat-design-minimal-technology-youtube-thumbnail_23-2149138459.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Health Care", imageUrl: "https://img.freepik.com/premium-photo/doctor-s-day-collage-design_23-2151439493.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Health Care", imageUrl: "https://img.freepik.com/free-vector/flat-design-science-youtube-thumbnail_23-2149175740.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "Health Care", imageUrl: "https://img.freepik.com/free-psd/healthcare-medical-service-ads-promotional-web-banner-template-design_84443-10609.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid" },
 
         // AI category
-        { category: "AI", imageUrl: "https://images.pexels.com/photos/1072851/pexels-photo-1072851.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://images.pexels.com/photos/23763/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=600", link: "./pages/first.html" }
+        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/artificial-intelligence-landing-page_23-2148351410.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "AI", imageUrl: "https://img.freepik.com/premium-vector/business-promotion-youtube-thumbnail-template-marketing-marketing-thumbnail-design_990621-113.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/artificial-intelligence-technology-landing-page_23-2150371158.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
+        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/gradient-ai-template-design_23-2150380023.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" }
     ];
 
     const cardContainer = document.getElementById("cardContainer");
@@ -70,7 +70,7 @@
 
         cardContainer.innerHTML = filteredCards.map(card => `
             <a href="${card.link}" class="block fadeIn rounded-lg overflow-hidden">
-                <img src="${card.imageUrl}" class="w-full object-cover  hover:scale-105 duration-500 transition-all" alt="${card.category}">
+                <img src="${card.imageUrl}" class="w-full h-full object-fill  hover:scale-105 duration-500 transition-all" alt="${card.category}">
             </a>
         `).join('');
     }
