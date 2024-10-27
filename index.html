@@ -13,25 +13,55 @@
     <link rel="stylesheet" href="/Docs/Style/global.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<style>
+    /* Hide scrollbar but keep it scrollable */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    /* Optional: Add gradient fading effect */
+    #buttonWrapper::before,
+    #buttonWrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        pointer-events: none;
+    }
+
+    #buttonWrapper::before {
+        left: 0;
+        background: linear-gradient(to right, rgba(14, 4, 30, 1), rgba(14, 4, 30, 0));
+    }
+
+    #buttonWrapper::after {
+        right: 0;
+        background: linear-gradient(to left, rgba(14, 4, 30, 1), rgba(14, 4, 30, 0));
+    }
+</style>
 
 <body>
 
     <div class="bg-[#0e041e] min-h-screen pb-5">
-        <div class="flex items-center p-4 md:justify-center md:gapx-x-4 gap-x-2 gap-y-4 pt-20 flex-wrap">
-            <button onclick="filterCards('All')"
-                class="filter-btn bg-white text-black rounded-full transition-all duration-300 border-white py-2 border-2 px-5 active">All</button>
-            <button onclick="filterCards('Portfolio')"
-                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">Portfolio</button>
-            <button onclick="filterCards('E-Commerce')"
-                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">E-Commerce</button>
-            <button onclick="filterCards('Health Care')"
-                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">Health
-                Care</button>
-            <button onclick="filterCards('AI')"
-                class="filter-btn bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5">AI</button>
+        <div class="flex items-center justify-center">
+            <div id="buttonWrapper" class="overflow-x-auto scrollbar-hide relative max-w-6xl">
+                <div id="buttonContainer" class="flex items-center gap-x-2 gap-y-4 pt-20 pb-4 px-4 whitespace-nowrap">
+                    <!-- Dynamic buttons will be added here -->
+                </div>
+            </div>
         </div>
 
-        <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:mt-10 mt-2 max-w-7xl w-full mx-auto p-4 gap-4 "
+
+
+        <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:mt-10 mt-2 max-w-7xl w-full mx-auto p-4 gap-4"
             id="cardContainer">
             <!-- Dynamic Cards -->
         </div>
@@ -39,10 +69,14 @@
 
 
 
+
+
 </body>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
+
+    const categories = ["All", "Portfolio", "E-Commerce", "Health Care", "AI", "Portfolio", "E-Commerce", "Health Care", "AI", "Portfolio", "E-Commerce", "Health Care", "AI"];
 
     const cards = [
         // Sports category
@@ -63,7 +97,7 @@
         { category: "AI", imageUrl: "https://img.freepik.com/premium-vector/business-promotion-youtube-thumbnail-template-marketing-marketing-thumbnail-design_990621-113.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
         { category: "AI", imageUrl: "https://img.freepik.com/free-vector/artificial-intelligence-technology-landing-page_23-2150371158.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
         { category: "AI", imageUrl: "https://img.freepik.com/free-vector/gradient-ai-template-design_23-2150380023.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        
+
         // E-Commerce category
         { category: "E-Commerce", imageUrl: "https://img.freepik.com/premium-vector/christmas-sale-discount-landing-page-design-template-web-banner_493236-146.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
         { category: "E-Commerce", imageUrl: "https://img.freepik.com/free-vector/flat-design-shopping-center-landing-page_23-2149321346.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
@@ -72,15 +106,15 @@
     ];
 
     const cardContainer = document.getElementById("cardContainer");
+    const buttonContainer = document.getElementById("buttonContainer");
 
     function displayCards(category) {
         let filteredCards = category === "All" ? cards : cards.filter(card => card.category === category);
-
         cardContainer.innerHTML = filteredCards.map(card => `
-            <a href="${card.link}" class="block fadeIn rounded-lg overflow-hidden">
-                <img src="${card.imageUrl}" class="w-full h-full object-fill  hover:scale-105 duration-500 transition-all" alt="${card.category}">
-            </a>
-        `).join('');
+                <a href="${card.link}" class="block fadeIn rounded-lg overflow-hidden">
+                    <img src="${card.imageUrl}" class="w-full h-full object-fill hover:scale-105 duration-500 transition-all" alt="${card.category}">
+                </a>
+            `).join('');
     }
 
     function filterCards(category) {
@@ -96,7 +130,18 @@
         activeButton.classList.add("bg-white", "text-black", "active");
     }
 
+    function createButtons() {
+        categories.forEach(category => {
+            const button = document.createElement("button");
+            button.innerText = category;
+            button.className = "filter-btn bg-transparent text-white rounded-full text-nowrap transition-all duration-300 hover:bg-white hover:text-black border-white py-2 border-2 px-5";
+            button.onclick = () => filterCards(category);
+            buttonContainer.appendChild(button);
+        });
+    }
+
     displayCards("All");
+    createButtons();
 
     const lenis = new Lenis();
     function raf(time) {
@@ -104,6 +149,7 @@
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+</script>
 </script>
 
 </html>

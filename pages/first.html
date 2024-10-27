@@ -14,34 +14,46 @@
     <link rel="stylesheet" href="/Docs/Style/first.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <style>
     .animate-custom-pulse {
-        animation: pulse 5s ease-in-out infinite; /* Change 0.5s to your desired duration */
+        animation: pulse 5s ease-in-out infinite;
     }
 
     @keyframes pulse {
-        0%, 100% {
+
+        0%,
+        100% {
             opacity: 1;
         }
+
         50% {
             opacity: 0.5;
         }
     }
 </style>
 
+<body>
 
-<body class="overflow-hidden">
-
-
-    <div class="w-[20rem] h-[20rem] bg-[#1f0d41] absolute top-0 rounded-full blur-3xl -translate-x-20 animate-custom-pulse  left-0"></div>
-    <div class="w-[20rem]  h-[20rem] bg-[#1f0d41] absolute bottom-0 rounded-full translate-x-20 animate-custom-pulse blur-3xl right-0"></div>
+    <div class=" w-full h-full overflow-x-hidden absolute  top-0 left-0">
+        <div
+            class="w-[20rem] h-[20rem] bg-[#1f0d40] absolute top-0 rounded-full blur-3xl -translate-x-20 animate-custom-pulse  left-0">
+        </div>
+        <div
+            class="w-[20rem]  h-[20rem] bg-[#150435] absolute bottom-20 rounded-full  animate-custom-pulse blur-3xl right-0">
+        </div>
+    </div>
     
     <div class="bg-[#0e041e] min-h-screen p-4">
         <div class="max-w-7xl w-full mx-auto pt-5 relative">
+            <!-- Notification -->
+            <div id="notification"
+                class="fixed top-5 fadeIn border border-zinc-500 left-5 bg-[#2c1246] text-white rounded-lg tracking-wide py-3 px-6 hidden">
+                Select at least 1
+            </div>
 
-            <div id="introSection" class="max-w-7xl w-full mx-auto pt-5 text-white text-center">
-                <img src="../Docs/Images/image (1).png" class="max-w-[23rem] w-full mx-auto"
-                    alt="">
+            <div class="max-w-7xl w-full mx-auto pt-5 text-white text-center" id="defaultSection">
+                <img src="../Docs/Images/image (1).png" class="max-w-[23rem] w-full mx-auto" alt="">
                 <h2 class="text-4xl font-semibold text-white">Quanto costa sviluppare la mia app?</h2>
                 <p class="text-zinc-300 pt-4 pb-5">
                     Calcola rapidamente il costo per creare la tua app, rispondendo a queste semplici domande.
@@ -65,14 +77,30 @@
 
             </div>
 
-            <div id="stageContainer" class="hidden min-h-screen max-w-7xl w-full mx-auto pt-10 fadeIn text-white">
-                <!-- Dynamic Stage Content will appear here -->
+
+            <div class="hidden" id="startsQuestions">
+                <div id="stageContainer" class="py-10 max-w-7xl w-full mx-auto pt-5 fadeIn text-white">
+                    <p id="progressCount" class="text-white text-xl w-full text-center pb-8">1 / 10</p>
+
+                    <!-- Dynamic question display -->
+                    <div id="questionsContainer"></div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="flex items-center justify-between">
+                    <button id="prevButton"
+                        class="border-2 px-5 py-2.5 rounded-lg border-white text-white transition-all duration-300 hover:bg-white hover:text-black"
+                        disabled>Prev</button>
+                    <button id="nextButton"
+                        class="border-2 px-5 py-2.5 rounded-lg border-white text-white transition-all duration-300 hover:bg-white hover:text-black">Next</button>
+                </div>
             </div>
 
-            <div id="finalPrice"
-                class="text-center text-4xl flex items-center justify-center flex-col hidden min-h-[90vh]">
+            <!-- Total price display -->
+            <div id="totalPriceContainer"
+                class="text-center text-3xl flex items-center justify-center flex-col min-h-[90vh] hidden">
                 <p class="text-white font-medium">The estimated cost for your app is:</p>
-                <h2 id="priceDisplay" class="text-6xl font-semibold mt-5 text-[#14e2cd]">€0</h2>
+                <h2 id="priceDisplay" class="text-5xl font-semibold mt-3 text-[#14e2cd]">€0</h2>
                 <button class="button mx-auto mt-8">
                     <div class="dots_border"></div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="sparkle">
@@ -90,10 +118,8 @@
                 </button>
             </div>
 
-
-
-
-            <h2 class="md:text-2xl text-xl font-semibold mt-16 text-white">Quanto costa creare un’app?
+            <div class="w-full border-b mt-20 border-zinc-700"></div>
+            <h2 class="md:text-2xl text-xl font-semibold mt-10 rounded-full text-white">Quanto costa creare un’app?
             </h2>
             <p class="text-zinc-300 pt-4 md:leading-relaxed tracking-wide ">Il calcolatore quantocostaunapp.com è uno
                 strumento offerto da Nova42 Srl, azienda informatica italiana, utilizzabile gratuitamente per stimare il
@@ -142,185 +168,269 @@
                 esigenze, valutare le funzionalità specifiche richieste e ottenere un preventivo più accurato.
                 Approfondire il progetto con dei professionisti del settore è il primo passo per trasformare la tua idea
                 in un'app di successo.</p>
+
         </div>
     </div>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
-</body>
+    <script>
+        const stages = [
+            {
+                id: "1",
+                stageTitle: "What is the complexity of the app you want to develop?",
+                price: [200, 400, 600, 1000],
+                options: [
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Basic - Simple functionality" },
+                    { imgSrc: "../Docs/Images/image (5).png", text: "Medium - Standard features" },
+                    { imgSrc: "../Docs/Images/image (7).png", text: "High - Advanced capabilities" },
+                    { imgSrc: "../Docs/Images/image (9).png", text: "Very High - Complex architecture" }
+                ]
+            },
+            {
+                id: "2",
+                stageTitle: "Which platform will you use?",
+                price: [150, 300, 450, 600],
+                options: [
+                    { imgSrc: "../Docs/Images/image (6).png", text: "Mobile - iOS & Android" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Web - Browser access" },
+                    { imgSrc: "../Docs/Images/image (8).png", text: "Both - Web & Mobile" },
+                    { imgSrc: "../Docs/Images/image (2).png", text: "Desktop - Windows/Mac" }
+                ]
+            },
+            {
+                id: "3",
+                stageTitle: "What type of database do you need?",
+                price: [100, 200, 500, 800],
+                options: [
+                    { imgSrc: "../Docs/Images/image (2).png", text: "SQL - Structured Data" },
+                    { imgSrc: "../Docs/Images/image (6).png", text: "Hybrid - Combination of both" },
+                    { imgSrc: "../Docs/Images/image (5).png", text: "NoSQL - Flexible Schema" },
+                    { imgSrc: "../Docs/Images/image (8).png", text: "Custom - Tailored Data Model" }
+                ]
+            },
+            {
+                id: "4",
+                stageTitle: "Do you need third-party integrations?",
+                price: [50, 100, 200, 300],
+                options: [
+                    { imgSrc: "../Docs/Images/image (5).png", text: "None - No integration" },
+                    { imgSrc: "../Docs/Images/image (7).png", text: "Some - Basic integrations" },
+                    { imgSrc: "../Docs/Images/image (9).png", text: "Multiple - Standard integrations" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Advanced - Full integration suite" }
+                ]
+            },
+            {
+                id: "5",
+                stageTitle: "What level of security do you require?",
+                price: [100, 300, 500, 700],
+                options: [
+                    { imgSrc: "../Docs/Images/image (6).png", text: "Basic - Essential security" },
+                    { imgSrc: "../Docs/Images/image (2).png", text: "Standard - Encrypted data" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Advanced - Data protection" },
+                    { imgSrc: "../Docs/Images/image (8).png", text: "Maximum - Full security suite" }
+                ]
+            },
+            {
+                id: "6",
+                stageTitle: "What user authentication method will you use?",
+                price: [80, 160, 240, 320],
+                options: [
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Basic Login - Username & Password" },
+                    { imgSrc: "../Docs/Images/image (5).png", text: "OAuth - Social login" },
+                    { imgSrc: "../Docs/Images/image (7).png", text: "MFA - Multi-Factor Authentication" },
+                    { imgSrc: "../Docs/Images/image (9).png", text: "Biometric - Fingerprint/FaceID" }
+                ]
+            },
+            {
+                id: "7",
+                stageTitle: "What level of design customization do you need?",
+                price: [150, 300, 450, 600],
+                options: [
+                    { imgSrc: "../Docs/Images/image (6).png", text: "Custom Design - Unique style" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Template-Based - Standard layout" },
+                    { imgSrc: "../Docs/Images/image (8).png", text: "Highly Customized - Tailored UX/UI" },
+                    { imgSrc: "../Docs/Images/image (2).png", text: "Premium - Full design freedom" }
+                ]
+            },
+            {
+                id: "8",
+                stageTitle: "Do you need analytics integration?",
+                price: [0, 100, 200, 300],
+                options: [
+                    { imgSrc: "../Docs/Images/image (5).png", text: "No Analytics - No tracking" },
+                    { imgSrc: "../Docs/Images/image (7).png", text: "Basic Tracking - Simple metrics" },
+                    { imgSrc: "../Docs/Images/image (9).png", text: "Advanced Analytics - Full insights" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Custom Reports - Detailed analysis" }
+                ]
+            },
+            {
+                id: "9",
+                stageTitle: "What type of testing do you require?",
+                price: [50, 150, 300, 450],
+                options: [
+                    { imgSrc: "../Docs/Images/image (6).png", text: "Unit Testing - Code-level tests" },
+                    { imgSrc: "../Docs/Images/image (2).png", text: "Integration Testing - End-to-end" },
+                    { imgSrc: "../Docs/Images/image (5).png", text: "Performance Testing - Load testing" },
+                    { imgSrc: "../Docs/Images/image (8).png", text: "Automated Testing - Full coverage" }
+                ]
+            },
+            {
+                id: "10",
+                stageTitle: "Do you need post-launch support?",
+                price: [0, 200, 400, 600],
+                options: [
+                    { imgSrc: "../Docs/Images/image (7).png", text: "No Support - Self-managed" },
+                    { imgSrc: "../Docs/Images/image (3).png", text: "Basic Support - Bug fixes" },
+                    { imgSrc: "../Docs/Images/image (5).png", text: "Extended Support - Regular updates" },
+                    { imgSrc: "../Docs/Images/image (9).png", text: "Premium Support - 24/7 Assistance" }
+                ]
+            }
+        ];
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-const stages = [
-    {
-        id: "1",
-        stageTitle: "What is the complexity of the app you want to develop?",
-        price: [200, 400, 600, 1000],
-        options: [
-            { imgSrc: "../Docs/Images/image (3).png", text: "Basic - Simple functionality" },
-            { imgSrc: "../Docs/Images/image (5).png", text: "Medium - Standard features" },
-            { imgSrc: "../Docs/Images/image (7).png", text: "High - Advanced capabilities" },
-            { imgSrc: "../Docs/Images/image (9).png", text: "Very High - Complex architecture" }
-        ]
-    },
-    {
-        id: "2",
-        stageTitle: "Which platform will you use?",
-        price: [150, 300, 450, 600],
-        options: [
-            { imgSrc: "../Docs/Images/image (6).png", text: "Mobile - iOS & Android" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Web - Browser access" },
-            { imgSrc: "../Docs/Images/image (8).png", text: "Both - Web & Mobile" },
-            { imgSrc: "../Docs/Images/image (2).png", text: "Desktop - Windows/Mac" }
-        ]
-    },
-    {
-        id: "3",
-        stageTitle: "What type of database do you need?",
-        price: [100, 200, 500, 800],
-        options: [
-            { imgSrc: "../Docs/Images/image (2).png", text: "SQL - Structured Data" },
-            { imgSrc: "../Docs/Images/image (6).png", text: "Hybrid - Combination of both" },
-            { imgSrc: "../Docs/Images/image (5).png", text: "NoSQL - Flexible Schema" },
-            { imgSrc: "../Docs/Images/image (8).png", text: "Custom - Tailored Data Model" }
-        ]
-    },
-    {
-        id: "4",
-        stageTitle: "Do you need third-party integrations?",
-        price: [50, 100, 200, 300],
-        options: [
-            { imgSrc: "../Docs/Images/image (5).png", text: "None - No integration" },
-            { imgSrc: "../Docs/Images/image (7).png", text: "Some - Basic integrations" },
-            { imgSrc: "../Docs/Images/image (9).png", text: "Multiple - Standard integrations" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Advanced - Full integration suite" }
-        ]
-    },
-    {
-        id: "5",
-        stageTitle: "What level of security do you require?",
-        price: [100, 300, 500, 700],
-        options: [
-            { imgSrc: "../Docs/Images/image (6).png", text: "Basic - Essential security" },
-            { imgSrc: "../Docs/Images/image (2).png", text: "Standard - Encrypted data" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Advanced - Data protection" },
-            { imgSrc: "../Docs/Images/image (8).png", text: "Maximum - Full security suite" }
-        ]
-    },
-    {
-        id: "6",
-        stageTitle: "What user authentication method will you use?",
-        price: [80, 160, 240, 320],
-        options: [
-            { imgSrc: "../Docs/Images/image (3).png", text: "Basic Login - Username & Password" },
-            { imgSrc: "../Docs/Images/image (5).png", text: "OAuth - Social login" },
-            { imgSrc: "../Docs/Images/image (7).png", text: "MFA - Multi-Factor Authentication" },
-            { imgSrc: "../Docs/Images/image (9).png", text: "Biometric - Fingerprint/FaceID" }
-        ]
-    },
-    {
-        id: "7",
-        stageTitle: "What level of design customization do you need?",
-        price: [150, 300, 450, 600],
-        options: [
-            { imgSrc: "../Docs/Images/image (6).png", text: "Custom Design - Unique style" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Template-Based - Standard layout" },
-            { imgSrc: "../Docs/Images/image (8).png", text: "Highly Customized - Tailored UX/UI" },
-            { imgSrc: "../Docs/Images/image (2).png", text: "Premium - Full design freedom" }
-        ]
-    },
-    {
-        id: "8",
-        stageTitle: "Do you need analytics integration?",
-        price: [0, 100, 200, 300],
-        options: [
-            { imgSrc: "../Docs/Images/image (5).png", text: "No Analytics - No tracking" },
-            { imgSrc: "../Docs/Images/image (7).png", text: "Basic Tracking - Simple metrics" },
-            { imgSrc: "../Docs/Images/image (9).png", text: "Advanced Analytics - Full insights" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Custom Reports - Detailed analysis" }
-        ]
-    },
-    {
-        id: "9",
-        stageTitle: "What type of testing do you require?",
-        price: [50, 150, 300, 450],
-        options: [
-            { imgSrc: "../Docs/Images/image (6).png", text: "Unit Testing - Code-level tests" },
-            { imgSrc: "../Docs/Images/image (2).png", text: "Integration Testing - End-to-end" },
-            { imgSrc: "../Docs/Images/image (5).png", text: "Performance Testing - Load testing" },
-            { imgSrc: "../Docs/Images/image (8).png", text: "Automated Testing - Full coverage" }
-        ]
-    },
-    {
-        id: "10",
-        stageTitle: "Do you need post-launch support?",
-        price: [0, 200, 400, 600],
-        options: [
-            { imgSrc: "../Docs/Images/image (7).png", text: "No Support - Self-managed" },
-            { imgSrc: "../Docs/Images/image (3).png", text: "Basic Support - Bug fixes" },
-            { imgSrc: "../Docs/Images/image (5).png", text: "Extended Support - Regular updates" },
-            { imgSrc: "../Docs/Images/image (9).png", text: "Premium Support - 24/7 Assistance" }
-        ]
-    }
-];
+        const startButton = document.getElementById('startButton');
+        const startsQuestions = document.getElementById('startsQuestions');
+        const defaultSection = document.getElementById('defaultSection');
+        startButton.addEventListener('click', () => {
+            startButton.style.display = "none"
+            defaultSection.classList.add("hidden")
+            startsQuestions.classList.remove("hidden")
+        })
 
-    let currentStage = 0;
-    let totalPrice = 0;
 
-    function startSurvey() {
-        document.getElementById("introSection").classList.add("hidden");
-        document.getElementById("stageContainer").classList.remove("hidden");
-        updateStage();
-    }
+        let currentStage = 0;
+        let totalPrice = 0;
+        const selectedOptions = Array(stages.length).fill([]).map(() => []);
 
-    function updateStage() {
-        const stageData = stages[currentStage];
-        const stageContainer = document.getElementById("stageContainer");
+        // Function to render the questions
+        function renderQuestions() {
+            const questionsContainer = document.getElementById('questionsContainer');
+            questionsContainer.innerHTML = ''; // Clear previous questions
 
-        stageContainer.innerHTML = `
-        <p class="text-white text-xl w-full text-center pb-8">${stageData.id} / ${stages.length}</p>
-        <h2 class="text-2xl font-semibold text-center">${stageData.stageTitle}</h2>
-        <div class="grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1.5 mt-4">
-            ${stageData.options.map((option, index) => `
-                <div onclick="selectOption(${index})" class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                    <img src="${option.imgSrc}" class="w-full mx-auto md:px-10 md:py-5" alt="${option.text}">
-                    <p class="text-center pt-3 text-sm md:text-[16px]">${option.text}</p>
-                </div>`).join('')}
-        </div>
-    `;
-    }
+            const current = stages[currentStage];
+            const questionTitle = document.createElement('h2');
+            questionTitle.className = 'md:text-2xl text-lg font-semibold text-center';
+            questionTitle.textContent = current.stageTitle;
+            questionsContainer.appendChild(questionTitle);
 
-    function selectOption(index) {
-        totalPrice += stages[currentStage].price[index];
-        if (currentStage < stages.length - 1) {
-            currentStage++;
-            updateStage();
-        } else {
-            displayFinalPrice();
+            const gridContainer = document.createElement('div');
+            gridContainer.className = 'grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1.5 mt-4';
+
+            current.options.forEach((option, index) => {
+                const card = document.createElement('div');
+                card.className = 'md:p-5 p-2 hover:bg-[#514d4a] fadeIn md:mt-10 mt-5 duration-300 flex flex-col items-center justify-center cursor-pointer rounded-lg transition-all';
+                card.onclick = () => handleCardSelect(card, index);
+
+                const img = document.createElement('img');
+                img.src = option.imgSrc;
+                img.alt = option.text;
+                img.className = 'w-full mx-auto md:px-10 px-2 md:py-5';
+
+                const text = document.createElement('p');
+                text.className = 'text-center pt-3 text-sm md:text-[17px] md:tracking-wide';
+                text.textContent = option.text;
+
+                // Retain the selected state on previously answered questions
+                if (selectedOptions[currentStage].includes(index)) {
+                    card.classList.add('bg-[#514d4a]');
+                }
+
+                card.appendChild(img);
+                card.appendChild(text);
+                gridContainer.appendChild(card);
+            });
+
+            questionsContainer.appendChild(gridContainer);
         }
-    }
 
-    function goBack() {
-        if (currentStage > 0) {
-            currentStage--;
-            updateStage();
+        // Handle card selection
+        function handleCardSelect(card, index) {
+            // Toggle selection
+            const isSelected = card.classList.toggle('bg-[#514d4a]');
+            const price = stages[currentStage].price[index];
+
+            if (isSelected) {
+                // If selected, add price to total
+                totalPrice += price;
+                selectedOptions[currentStage].push(index); // Store the selected index
+            } else {
+                // If unselected, deduct price from total
+                totalPrice -= price;
+                selectedOptions[currentStage] = selectedOptions[currentStage].filter(i => i !== index); // Remove the index
+            }
+
+            updatePriceDisplay();
         }
-    }
 
-    function displayFinalPrice() {
-        document.getElementById("stageContainer").classList.add("hidden");
-        document.getElementById("finalPrice").classList.remove("hidden");
-        document.getElementById("priceDisplay").innerText = `€ ${totalPrice}`;
-    }
+        // Update price display
+        function updatePriceDisplay() {
+            document.getElementById('priceDisplay').textContent = `€${totalPrice}`;
+        }
 
-    document.getElementById("startButton").addEventListener("click", startSurvey);
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.remove('hidden');
+
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Handle next button click
+        document.getElementById('nextButton').onclick = () => {
+            if (selectedOptions[currentStage].length === 0) {
+                showNotification("Select at least 1");
+                return; // Prevent moving to the next stage if no option is selected
+            }
+
+            if (currentStage < stages.length - 1) {
+                currentStage++;
+                renderQuestions();
+                document.getElementById('progressCount').textContent = `${currentStage + 1} / ${stages.length}`;
+                document.getElementById('prevButton').disabled = false;
+
+                // Check if it's the last stage
+                if (currentStage === stages.length - 1) {
+                    document.getElementById('nextButton').textContent = 'Finish';
+                }
+            } else {
+                // If all questions answered, show total price
+                document.getElementById('totalPriceContainer').classList.remove('hidden');
+                document.getElementById('stageContainer').classList.add('hidden');
+                document.getElementById('prevButton').classList.add('hidden');
+                document.getElementById('nextButton').classList.add('hidden');
+            }
+        };
+
+        // Handle previous button click
+        document.getElementById('prevButton').onclick = () => {
+            if (currentStage > 0) {
+                currentStage--;
+                renderQuestions();
+                document.getElementById('progressCount').textContent = `${currentStage + 1} / ${stages.length}`;
+                document.getElementById('nextButton').textContent = 'Next';
+
+                // Disable Prev button if on first stage
+                if (currentStage === 0) {
+                    document.getElementById('prevButton').disabled = true;
+                }
+            }
+        };
+
+        // Initialize the first question
+        renderQuestions();
 
 
-
-    const lenis = new Lenis();
+        const lenis = new Lenis();
     function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-</script>
+        
+    </script>
+</body>
 
 </html>
