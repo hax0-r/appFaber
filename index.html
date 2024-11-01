@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppFaber</title>
+    <title>App Faber</title>
     <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/Docs/Style/global.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./Docs/Style/global.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <style>
@@ -31,347 +30,73 @@
 
 <body>
 
-    <div class="bg-[#0e041e] min-h-screen pb-5">
-        <div class="flex items-center p-4 md:justify-center md:gapx-x-4 gap-x-2 gap-y-4 pt-20 flex-wrap">
-            <div class="md:relative overflow-y-hidden pb-14 ">
-
-                <div class="swiper mySwiper max-w-7xl w-full mx-auto ">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('All')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight bg-white text-black rounded-full transition-all duration-300 border-white  border-2 px-2 active">All</button>
-                        </div>
-                        <div class="swiper-slide">
-
-                            <button onclick="filterCards('Portfolio')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white  border-2 px-2">Portfolio</button>
-                        </div>
-                        <div class="swiper-slide">
-
-
-                            <button onclick="filterCards('E-Commerce')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white  border-2 px-2">E-Commerce</button>
-                        </div>
-                        <div class="swiper-slide">
-
-                            <button onclick="filterCards('Health Care')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white  border-2 px-2">Health
-                                Care</button>
-                        </div>
-                        <div class="swiper-slide">
-
-                            <button onclick="filterCards('AI')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight bg-transparent text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black border-white  border-2 px-2">AI</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Art & Design')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Art
-                                & Design</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Auto & Vehicles')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Auto
-                                & Vehicles</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Beauty')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Beauty</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Books & Reference')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Books
-                                & Reference</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Business')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Business</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Comics')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Comics</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Communication')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Communicate</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Dating')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Dating</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Education')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Education</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Entertainment')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Entertainment</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Events')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Events</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Finance')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Finance</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Food & Drink')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Food
-                                & Drink</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Health & Fitness')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Health
-                                & Fitness</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('House & Home')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">House
-                                & Home</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Libraries & Demo')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Libraries
-                                & Demo</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Lifestyle')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Lifestyle</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Maps & Navigation')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Maps
-                                & Navigation</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Medical')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Medical</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Music & Audio')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Music
-                                & Audio</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('News & Magazines')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">News
-                                & Magazines</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Parenting')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Parenting</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Personalization')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Personalization</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Photography')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Photography</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Productivity')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Productivity</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Shopping')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Shopping</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Social')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Social</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Sports')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Sports</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Tools')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Tools</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Travel & Local')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white  border-2 px-2">Travel
-                                & Local</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Video Players & Editors')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white border-2 px-2">Video
-                                Players & Editors</button>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <button onclick="filterCards('Weather')"
-                                class="filter-btn max-w-[10rem] w-full h-[3rem] leading-tight  text-white rounded-full transition-all duration-300 border-white border-2 px-2">Weather</button>
-                        </div>
-
-
-
-
+    <div class="bg-[#0e041e] w-full min-h-screen flex items-center justify-center">
+        <div class="max-w-7xl w-full mx-auto p-5">
+            <h1 class="text-white text-center md:text-4xl text-2xl font-semibold pb-5">Choose your app mobile category
+            </h1>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide">
+                        <a href="./questions.html">
+                            <div
+                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                <img src="./Docs/Images/demo1.png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
+                                <p class="text-center text-white pt-3 text-sm md:text-[16px]">Gaming</p>
+                            </div>
+                        </a>
                     </div>
-
-                </div>
-                <div
-                    class="absolute md:-bottom-0 right-0  z-10 flex items-center md:mt-0 md:pr-0 mt-3 pr-4 justify-center gap-2">
-                    <button
-                        class=" text-white  hover:bg-zinc-500 bg-zinc-600 rounded-full transition-all duration-300  w-11 h-11 flex items-center justify-center prevBtn">
-                        <i class="fa-solid fa-arrow-left pt-[1px] text-sm"></i></button>
-                    <button
-                        class=" text-white  hover:bg-zinc-500 bg-zinc-600 rounded-full transition-all duration-300  w-11 h-11 flex items-center justify-center nextBtn">
-                        <i class="fa-solid fa-arrow-right pt-[1px] text-sm"></i></button>
+                    <div class="swiper-slide">
+                        <a href="./questions.html">
+                            <div
+                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                <img src="./Docs/Images/demo1.png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
+                                <p class="text-center text-white pt-3 text-sm md:text-[16px]">E-commerce</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="./questions.html">
+                            <div
+                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                <img src="./Docs/Images/demo1.png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
+                                <p class="text-center text-white pt-3 text-sm md:text-[16px]">Desgin</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="./questions.html">
+                            <div
+                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                <img src="./Docs/Images/demo1.png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
+                                <p class="text-center text-white pt-3 text-sm md:text-[16px]">Delivery</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="./questions.html">
+                            <div
+                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                <img src="./Docs/Images/demo1.png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
+                                <p class="text-center text-white pt-3 text-sm md:text-[16px]">Web App</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-w-7xl w-full mx-auto p-4 gap-4 "
-            id="cardContainer">
-            <!-- Dynamic Cards -->
+            <div class="flex justify-end items-center gap-3 mt-10">
+                <button
+                    class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-prev">
+                    << /button>
+                        <button
+                            class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-next">></button>
+            </div>
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./Docs/Javascripts/global.js"></script>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-
-
-    let swiper;
-
-    function initializeSwiper() {
-        let slidesPerViewShow;
-        if (window.innerWidth > 1000) {
-            slidesPerViewShow = 8;
-        } else if (window.innerWidth > 800) {
-            slidesPerViewShow = 7;
-        } else if (window.innerWidth > 700) {
-            slidesPerViewShow = 5;
-        } else if (window.innerWidth > 400) {
-            slidesPerViewShow = 3;
-        } else {
-            slidesPerViewShow = 2;
-        }
-
-        if (!swiper) {
-            swiper = new Swiper(".mySwiper", {
-                slidesPerView: slidesPerViewShow,
-                spaceBetween: 10,
-                navigation: {
-                    nextEl: ".nextBtn",
-                    prevEl: ".prevBtn",
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-            });
-        } else {
-            swiper.params.slidesPerView = slidesPerViewShow;
-            swiper.update();
-        }
-    }
-
-    // Initialize Swiper on page load
-    initializeSwiper();
-
-    // Update Swiper on window resize
-    window.addEventListener("resize", () => {
-        initializeSwiper();
-    });
-
-
-    const cards = [
-        // Sports category
-        { category: "Portfolio", imageUrl: "https://img.freepik.com/free-vector/sport-landing-page-template-with-photo_23-2148209143.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Portfolio", imageUrl: "https://img.freepik.com/premium-vector/fitness-center-ads-gym-promotional-web-banner-template_1283177-213.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Portfolio", imageUrl: "https://img.freepik.com/premium-photo/muscular-man-doing-abs-exercise-gym-workout-photos-bodybuilder-execute-exercise-with-weight-gym_1270349-61406.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Portfolio", imageUrl: "https://img.freepik.com/free-psd/gym-fitness-web-banner-template_106176-710.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Portfolio", imageUrl: "https://img.freepik.com/premium-vector/fitness-center-ads-gym-promotional-web-banner-template_1283177-203.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-
-        // Health Care category
-        { category: "Health Care", imageUrl: "https://img.freepik.com/free-vector/flat-design-minimal-technology-youtube-thumbnail_23-2149138459.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://img.freepik.com/premium-photo/doctor-s-day-collage-design_23-2151439493.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://img.freepik.com/free-vector/flat-design-science-youtube-thumbnail_23-2149175740.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "Health Care", imageUrl: "https://img.freepik.com/free-psd/healthcare-medical-service-ads-promotional-web-banner-template-design_84443-10609.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid" },
-
-        // AI category
-        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/artificial-intelligence-landing-page_23-2148351410.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://img.freepik.com/premium-vector/business-promotion-youtube-thumbnail-template-marketing-marketing-thumbnail-design_990621-113.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/artificial-intelligence-technology-landing-page_23-2150371158.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "AI", imageUrl: "https://img.freepik.com/free-vector/gradient-ai-template-design_23-2150380023.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-
-        // E-Commerce category
-        { category: "E-Commerce", imageUrl: "https://img.freepik.com/premium-vector/christmas-sale-discount-landing-page-design-template-web-banner_493236-146.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "E-Commerce", imageUrl: "https://img.freepik.com/free-vector/flat-design-shopping-center-landing-page_23-2149321346.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "E-Commerce", imageUrl: "https://img.freepik.com/premium-vector/abstract-banner-9_956664-28.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" },
-        { category: "E-Commerce", imageUrl: "https://img.freepik.com/premium-vector/flat-gym-fitness-landing-page-template_23-2149637540.jpg?ga=GA1.1.427260846.1727756127&semt=ais_hybrid", link: "./pages/first.html" }
-    ];
-
-    const cardContainer = document.getElementById("cardContainer");
-
-    function displayCards(category) {
-        let filteredCards = category === "All" ? cards : cards.filter(card => card.category === category);
-
-        cardContainer.innerHTML = filteredCards.map(card => `
-            <a href="${card.link}" class="block fadeIn rounded-lg overflow-hidden">
-                <img src="${card.imageUrl}" class="w-full h-full object-fill  hover:scale-105 duration-500 transition-all" alt="${card.category}">
-            </a>
-        `).join('');
-    }
-
-    function filterCards(category) {
-        displayCards(category);
-
-        document.querySelectorAll(".filter-btn").forEach(button => {
-            button.classList.remove("bg-white", "text-black", "active");
-            button.classList.add("bg-transparent", "text-white");
-        });
-
-        const activeButton = Array.from(document.querySelectorAll(".filter-btn")).find(btn => btn.innerText === category || (category === 'All' && btn.innerText === 'All'));
-        activeButton.classList.remove("bg-transparent", "text-white");
-        activeButton.classList.add("bg-white", "text-black", "active");
-    }
-
-    displayCards("All");
-
-    const lenis = new Lenis();
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-</script>
 
 </html>

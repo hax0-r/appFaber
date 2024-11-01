@@ -25,3 +25,18 @@ img, button, iframe, a {
     opacity: 1;
   }
 }
+.animate-custom-pulse {
+  animation: pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+      opacity: 1;
+  }
+
+  50% {
+      opacity: 0.5;
+  }
+}
