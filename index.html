@@ -4,18 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Faber</title>
+    <title>Page Title</title>
     <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./Docs/Style/global.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="/Docs/Style/global.css">
+    <link rel="stylesheet" href="/Docs/Style/first.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <style>
+    .animate-custom-pulse {
+        animation: pulse 5s ease-in-out infinite;
+        /* Change 0.5s to your desired duration */
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
     .swiper {
         width: 100%;
         height: 100%;
@@ -28,120 +46,368 @@
     }
 </style>
 
+
 <body>
 
-    <div class="bg-[#0e041e] w-full min-h-screen flex items-center justify-center">
-        <div class="max-w-7xl w-full mx-auto p-5">
-            <h1 class="text-white text-center md:text-4xl text-2xl font-semibold pb-5">Choose your app mobile category
-            </h1>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper ">
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (4).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Food & Drink</p>
+
+    <div class="bg-[#0e041e] min-h-screen px-4">
+        <div class="max-w-7xl w-full mx-auto relative">
+
+            <div id="introSection" class="max-w-7xl w-full mx-auto pt-5 text-white text-center flex flex-col justify-center items-center min-h-screen">
+                <img src="../Docs/Images/image (1).png" class="max-w-[23rem] w-full mx-auto" alt="">
+                <h2 class="text-4xl font-semibold text-white">Quanto costa sviluppare la mia app?</h2>
+                <p class="text-zinc-300 pt-4 pb-5">
+                    Calcola rapidamente il costo per creare la tua app, rispondendo a queste semplici domande.
+                </p>
+
+                <button id="startButton" class="button mx-auto">
+                    <div class="dots_border"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="sparkle">
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M14.187 8.096L15 5.25L15.813 8.096C16.0231 8.83114 16.4171 9.50062 16.9577 10.0413C17.4984 10.5819 18.1679 10.9759 18.903 11.186L21.75 12L18.904 12.813C18.1689 13.0231 17.4994 13.4171 16.9587 13.9577C16.4181 14.4984 16.0241 15.1679 15.814 15.903L15 18.75L14.187 15.904C13.9769 15.1689 13.5829 14.4994 13.0423 13.9587C12.5016 13.4181 11.8321 13.0241 11.097 12.814L8.25 12L11.096 11.187C11.8311 10.9769 12.5006 10.5829 13.0413 10.0423C13.5819 9.50162 13.9759 8.83214 14.186 8.097L14.187 8.096Z">
+                        </path>
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M6 14.25L5.741 15.285C5.59267 15.8785 5.28579 16.4206 4.85319 16.8532C4.42059 17.2858 3.87853 17.5927 3.285 17.741L2.25 18L3.285 18.259C3.87853 18.4073 4.42059 18.7142 4.85319 19.1468C5.28579 19.5794 5.59267 20.1215 5.741 20.715L6 21.75L6.259 20.715C6.40725 20.1216 6.71398 19.5796 7.14639 19.147C7.5788 18.7144 8.12065 18.4075 8.714 18.259L9.75 18L8.714 17.741C8.12065 17.5925 7.5788 17.2856 7.14639 16.853C6.71398 16.4204 6.40725 15.8784 6.259 15.285L6 14.25Z">
+                        </path>
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z">
+                        </path>
+                    </svg>
+                    <span class="text_button">Generate Site</span>
+                </button>
+
+            </div>
+
+            <div class="hidden" id="secondIntroSection">
+                <div class="flex items-center justify-center min-h-screen flex-col">
+                    <h1 class="text-white text-center md:text-4xl text-2xl font-semibold pb-5">Choose your app mobile
+                        category
+                    </h1>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper ">
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (4).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Food & Drink</p>
+                                </div>
                             </div>
-                        </a>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (10).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Book & Reference</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (11).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Beauty</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (12).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Shopping</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (13).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Other Category</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (14).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Travel & Local</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (15).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Tools</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (16).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Art & Design</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (17).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Health & Fitness</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide secondIntroSectionBtn">
+                                <div
+                                    class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
+                                    <img src="./Docs/Images/image (18).png" class="w-full mx-auto md:px-5 md:py-5"
+                                        alt="img">
+                                    <p
+                                        class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">
+                                        Education</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (10).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Book & Reference</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (11).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Beauty</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (12).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Shopping</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (13).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Other Category</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (14).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Travel & Local</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (15).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Tools</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (16).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Art & Design</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (17).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Health & Fitness</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="./questions.html">
-                            <div
-                                class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#514d4a] transition-all">
-                                <img src="./Docs/Images/image (18).png" class="w-full mx-auto md:px-5 md:py-5" alt="img">
-                                <p class="text-center text-white pt-3 text-sm md:font-medium md:text-[17px] tracking-wide">Education</p>
-                            </div>
-                        </a>
+                    <div class="w-full">
+                        <div class="flex justify-end items-center gap-3 mt-10">
+                            <button
+                                class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-prev">
+                                &#60; </button>
+                            <button
+                                class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-next">>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="flex justify-end items-center gap-3 mt-10">
-                <button
-                    class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-prev">
-                    < </button>
-                        <button
-                            class="text-white bg-[#150435] w-12 h-12 fles justify-center items-center rounded-full border border-[#ffffff45] text-xl transition-all duration-300 hover:bg-[#2b1653] button-next">></button>
+
+            <div id="stageContainer" class="hidden flex flex-col justify-center items-center min-h-screen max-w-7xl w-full mx-auto pt-10 fadeIn text-white">
+
+                <!-- Dynamic Stage Content will appear here -->
+            </div>
+
+            <div id="finalPrice"
+                class="text-center text-4xl flex items-center justify-center flex-col hidden min-h-screen">
+                <p class="text-white font-medium">The estimated cost for your app is:</p>
+                <h2 id="priceDisplay" class="text-6xl font-semibold mt-5 text-[#14e2cd]">€0</h2>
+                <button class="button mx-auto mt-8">
+                    <div class="dots_border"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="sparkle">
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M14.187 8.096L15 5.25L15.813 8.096C16.0231 8.83114 16.4171 9.50062 16.9577 10.0413C17.4984 10.5819 18.1679 10.9759 18.903 11.186L21.75 12L18.904 12.813C18.1689 13.0231 17.4994 13.4171 16.9587 13.9577C16.4181 14.4984 16.0241 15.1679 15.814 15.903L15 18.75L14.187 15.904C13.9769 15.1689 13.5829 14.4994 13.0423 13.9587C12.5016 13.4181 11.8321 13.0241 11.097 12.814L8.25 12L11.096 11.187C11.8311 10.9769 12.5006 10.5829 13.0413 10.0423C13.5819 9.50162 13.9759 8.83214 14.186 8.097L14.187 8.096Z">
+                        </path>
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M6 14.25L5.741 15.285C5.59267 15.8785 5.28579 16.4206 4.85319 16.8532C4.42059 17.2858 3.87853 17.5927 3.285 17.741L2.25 18L3.285 18.259C3.87853 18.4073 4.42059 18.7142 4.85319 19.1468C5.28579 19.5794 5.59267 20.1215 5.741 20.715L6 21.75L6.259 20.715C6.40725 20.1216 6.71398 19.5796 7.14639 19.147C7.5788 18.7144 8.12065 18.4075 8.714 18.259L9.75 18L8.714 17.741C8.12065 17.5925 7.5788 17.2856 7.14639 16.853C6.71398 16.4204 6.40725 15.8784 6.259 15.285L6 14.25Z">
+                        </path>
+                        <path class="path" stroke-linejoin="round" stroke-linecap="round" stroke="black" fill="black"
+                            d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z">
+                        </path>
+                    </svg>
+                    <span class="text_button">Apply Now For More</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="./Docs/Javascripts/global.js"></script>
-
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="./Docs/Javascripts/global.js"></script>
+
+<script>
+    const stages = [
+        {
+            id: "1",
+            stageTitle: "What is the complexity of the app you want to develop?",
+            price: [1000, 2500, 4000, 6000],
+            options: [
+                { imgSrc: "../Docs/Images/image (2).png", text: "Basic - Simple functionality" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "Medium - Standard features" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "High - Advanced capabilities" },
+                { imgSrc: "../Docs/Images/image (6).png", text: "Very High - Complex architecture" }
+            ]
+        },
+        {
+            id: "2",
+            stageTitle: "Which platform will you use?",
+            price: [2000, 1500, 3000, 2500],
+            options: [
+                { imgSrc: "../Docs/Images/image (7).png", text: "Mobile - iOS & Android" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "Desktop - Windows/Mac" },
+                { imgSrc: "../Docs/Images/image (8).png", text: "Web - Browser access" },
+                { imgSrc: "../Docs/Images/image (9).png", text: "Both - Web & Mobile" },
+            ]
+        },
+        {
+            id: "3",
+            stageTitle: "What type of database do you need?",
+            price: [1000, 1500, 2000, 2500],
+            options: [
+                { imgSrc: "../Docs/Images/image (6).png", text: "NoSQL - Flexible Schema" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "SQL - Structured Data" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Hybrid - Combination of both" },
+                { imgSrc: "../Docs/Images/image (7).png", text: "Custom - Tailored Data Model" }
+            ]
+        },
+        {
+            id: "4",
+            stageTitle: "Do you need third-party integrations?",
+            price: [0, 1000, 2000, 3000],
+            options: [
+                { imgSrc: "../Docs/Images/image (8).png", text: "None - No integration" },
+                { imgSrc: "../Docs/Images/image (9).png", text: "Some - Basic integrations" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Multiple - Standard integrations" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "Advanced - Full integration suite" }
+            ]
+        },
+        {
+            id: "5",
+            stageTitle: "What level of security do you require?",
+            price: [500, 1500, 2500, 4000],
+            options: [
+                { imgSrc: "../Docs/Images/image (7).png", text: "Advanced - Data protection" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Basic - Essential security" },
+                { imgSrc: "../Docs/Images/image (6).png", text: "Standard - Encrypted data" },
+                { imgSrc: "../Docs/Images/image (8).png", text: "Maximum - Full security suite" }
+            ]
+        },
+        {
+            id: "6",
+            stageTitle: "What user authentication method will you use?",
+            price: [500, 1500, 2500, 3000],
+            options: [
+                { imgSrc: "../Docs/Images/image (6).png", text: "Basic Login - Username & Password" },
+                { imgSrc: "../Docs/Images/image (2).png", text: "OAuth - Social login" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "MFA - Multi-Factor Authentication" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Biometric - Fingerprint/FaceID" }
+            ]
+        },
+        {
+            id: "7",
+            stageTitle: "What level of design customization do you need?",
+            price: [2500, 1000, 3000, 4000],
+            options: [
+                { imgSrc: "../Docs/Images/image (6).png", text: "Custom Design - Unique style" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Template-Based - Standard layout" },
+                { imgSrc: "../Docs/Images/image (8).png", text: "Highly Customized - Tailored UX/UI" },
+                { imgSrc: "../Docs/Images/image (9).png", text: "Premium - Full design freedom" }
+            ]
+        },
+        {
+            id: "8",
+            stageTitle: "Do you need analytics integration?",
+            price: [0, 500, 1500, 2000],
+            options: [
+                { imgSrc: "../Docs/Images/image (2).png", text: "No Analytics - No tracking" },
+                { imgSrc: "../Docs/Images/image (3).png", text: "Basic Tracking - Simple metrics" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Advanced Analytics - Full insights" },
+                { imgSrc: "../Docs/Images/image (6).png", text: "Custom Reports - Detailed analysis" }
+            ]
+        },
+        {
+            id: "9",
+            stageTitle: "What type of testing do you require?",
+            price: [1000, 2000, 2500, 3000],
+            options: [
+                { imgSrc: "../Docs/Images/image (7).png", text: "Unit Testing - Code-level tests" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Performance Testing - Load testing" },
+                { imgSrc: "../Docs/Images/image (8).png", text: "Integration Testing - End-to-end" },
+                { imgSrc: "../Docs/Images/image (2).png", text: "Automated Testing - Full coverage" }
+            ]
+        },
+        {
+            id: "10",
+            stageTitle: "Do you need post-launch support?",
+            price: [0, 500, 1500, 3000],
+            options: [
+                { imgSrc: "../Docs/Images/image (3).png", text: "No Support - Self-managed" },
+                { imgSrc: "../Docs/Images/image (6).png", text: "Extended Support - Regular updates" },
+                { imgSrc: "../Docs/Images/image (5).png", text: "Basic Support - Bug fixes" },
+                { imgSrc: "../Docs/Images/image (7).png", text: "Premium Support - 24/7 Assistance" }
+            ]
+        }
+    ];
+
+    let currentStage = 0;
+    let totalPrice = 0;
+
+    function startSurvey() {
+        document.getElementById("introSection").classList.add("hidden");
+        document.getElementById("secondIntroSection").classList.remove("hidden");
+    }
+
+    function startSurveySercond() {
+        document.getElementById("stageContainer").classList.remove("hidden");
+        document.getElementById("secondIntroSection").classList.add("hidden");
+        updateStage();
+    }
+
+    document.getElementById("startButton").addEventListener("click", startSurvey);
+    const buttons = document.getElementsByClassName("secondIntroSectionBtn");
+    Array.from(buttons).forEach(button => {
+        button.addEventListener("click", startSurveySercond);
+    });
+
+    function updateStage() {
+        const stageData = stages[currentStage];
+        const stageContainer = document.getElementById("stageContainer");
+
+        stageContainer.innerHTML = `
+        <p class="text-white text-xl w-full text-center pb-8">${stageData.id} / ${stages.length}</p>
+        <h2 class="text-2xl font-semibold text-center">${stageData.stageTitle}</h2>
+        <div class="grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1.5 mt-4">
+            ${stageData.options.map((option, index) => `
+                <div onclick="selectOption(${index})" class="md:p-5 p-2 fadeIn hover:-translate-y-3 mt-10 duration-300 cursor-pointer rounded-lg hover:bg-[#16062f] hover:border-zinc-500 border border-[#0e041e] transition-all">
+                    <img src="${option.imgSrc}" class="w-full mx-auto md:px-10 md:py-5" alt="${option.text}">
+                    <p class="text-center pt-3 text-sm md:text-[16px]">${option.text}</p>
+                </div>`).join('')}
+        </div>
+    `;
+    }
+
+    function selectOption(index) {
+        totalPrice += stages[currentStage].price[index];
+        if (currentStage < stages.length - 1) {
+            currentStage++;
+            updateStage();
+        } else {
+            displayFinalPrice();
+        }
+    }
+
+    function goBack() {
+        if (currentStage > 0) {
+            currentStage--;
+            updateStage();
+        }
+    }
+
+    function displayFinalPrice() {
+        document.getElementById("stageContainer").classList.add("hidden");
+        document.getElementById("finalPrice").classList.remove("hidden");
+        document.getElementById("priceDisplay").innerText = `€ ${totalPrice}`;
+    }
+
+</script>
 
 </html>
