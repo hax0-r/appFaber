@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
+    <title>App Faber</title>
     <link rel="shortcut icon" href="/Docs/Assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -202,8 +202,6 @@
 
             <div id="stageContainer"
                 class="hidden flex flex-col justify-center items-center min-h-screen max-w-7xl w-full mx-auto pt-10 fadeIn text-white">
-
-                <!-- Dynamic Stage Content will appear here -->
             </div>
 
             <div id="finalPrice"
@@ -227,14 +225,43 @@
                 </button>
             </div>
 
-            <div class="hidden min-h-screen flex items-center justify-center" id="form">
-                <form class="max-w-[30rem] w-full mx-auto border">
-n
+            <div class="hidden fadeIn min-h-screen flex items-center justify-center" id="form">
+                <form class="max-w-lg w-full text-white mx-auto border p-5 rounded-lg my-16">
+                    <h2 class="text-center font-semibold md:text-4xl text-2xl">Book a free call</h2>
+
+                    <label for="" class="block mt-10 text-zinc-200 text-sm">Name</label>
+                    <input type="text" class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
+                        placeholder="Enter Name">
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Surname</label>
+                    <input type="text" class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
+                        placeholder="Enter Surname">
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Country</label>
+                    <select name="country" id="country"
+                        class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
+                        <option class="text-black" value="" selected>Select Country</option>
+                    </select>
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Language</label>
+                    <select name="language" id="language"
+                        class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
+                        <option class="text-black" value="" selected>Select Language</option>
+                    </select>
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Phone Number</label>
+                    <input type="number"
+                        class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
+                        placeholder="Enter Number">
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">E-Mail</label>
+                    <input type="email"
+                        class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
+                        placeholder="Enter email">
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Description</label>
+                    <textarea rows="4"
+                        class="bg-transparent placeholder:text-zinc-500 resize-none border-b-2 w-full pb-2.5 pt-1.5 "
+                        placeholder="Write short description of your project"></textarea>
                 </form>
             </div>
         </div>
     </div>
-    
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
