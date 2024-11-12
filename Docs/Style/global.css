@@ -9,7 +9,7 @@
   scroll-behavior: smooth;
 }
 
-img, button, iframe, a {
+img, button, iframe, a, label,select,::placeholder {
   user-select: none;
 }
 
