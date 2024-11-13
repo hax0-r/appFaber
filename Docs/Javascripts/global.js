@@ -114,6 +114,10 @@ const stages = [
     }
 ];
 
+document.getElementsByTagName("form")[0].addEventListener("submit", function(event) {
+    event.preventDefault();
+});
+
 let currentStage = 0;
 let totalPrice = 0;
 
@@ -129,8 +133,8 @@ function startSurveySercond() {
 }
 
 function bookCall() {
-    document.getElementById("finalPrice").classList.add("hidden");
-    document.getElementById("form").classList.remove("hidden");
+    document.getElementById("form").classList.add("hidden");
+    document.getElementById("finalPrice").classList.remove("hidden");
 }
 
 document.getElementById("startButton").addEventListener("click", startSurvey);
@@ -177,7 +181,7 @@ function goBack() {
 
 function displayFinalPrice() {
     document.getElementById("stageContainer").classList.add("hidden");
-    document.getElementById("finalPrice").classList.remove("hidden");
+    document.getElementById("form").classList.remove("hidden");
     document.getElementById("priceDisplay").innerText = `€ ${totalPrice}`;
 }
 

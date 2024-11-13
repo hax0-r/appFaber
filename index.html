@@ -194,12 +194,12 @@
                             d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z">
                         </path>
                     </svg>
-                    <span class="text_button" id="bookCall">Book a free call</span>
+                    <span class="text_button">Book a free call</span>
                 </button>
             </div>
 
             <div class="hidden fadeIn min-h-screen flex items-center justify-center" id="form">
-                <form class="max-w-lg w-full text-white mx-auto border p-5 rounded-lg my-16">
+                <form  class="max-w-lg w-full text-white mx-auto border p-5 rounded-lg my-16">
                     <h2 class="text-center font-semibold md:text-4xl text-2xl">Book a free call</h2>
 
                     <label for="" class="block mt-10 text-zinc-200 text-sm">Name</label>
@@ -208,30 +208,31 @@
                     <label for="" class="block mt-8 text-zinc-200 text-sm">Surname</label>
                     <input type="text" class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
                         placeholder="Enter Surname">
-                        <label for="" class="block mt-8 text-zinc-200 text-sm">Phone Number</label>
-                        <input type="number"
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Phone Number</label>
+                    <input type="number"
                         class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
                         placeholder="Enter Number">
-                        <label for="" class="block mt-8 text-zinc-200 text-sm">E-Mail</label>
-                        <input type="email"
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">E-Mail</label>
+                    <input type="email"
                         class="bg-transparent placeholder:text-zinc-500 border-b-2 w-full pb-2.5 pt-1.5 "
                         placeholder="Enter email">
-                        <label for="" class="block mt-8 text-zinc-200 text-sm">Country</label>
-                        <select name="country" id="country"
-                            class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
-                            <option class="text-black" value="" selected>Select Country</option>
-                        </select>
-                        <label for="" class="block mt-8 text-zinc-200 text-sm">Language</label>
-                        <select name="language" id="language"
-                            class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
-                            <option class="text-black" value="" selected>Select Language</option>
-                        </select>
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Country</label>
+                    <select name="country" id="country"
+                        class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
+                        <option class="text-black" value="" selected>Select Country</option>
+                    </select>
+                    <label for="" class="block mt-8 text-zinc-200 text-sm">Language</label>
+                    <select name="language" id="language"
+                        class="w-full text-white bg-transparent border-b-2 pb-2.5 pt-1.5">
+                        <option class="text-black" value="" selected>Select Language</option>
+                    </select>
                     <label for="" class="block mt-8 text-zinc-200 text-sm">Description</label>
                     <textarea rows="4"
                         class="bg-transparent placeholder:text-zinc-500 resize-none border-b-2 w-full pb-2.5 pt-1.5 "
                         placeholder="Write short description of your project"></textarea>
-                    <button type="submit" class="w-full text-center py-4 border-zinc-600 mt-4 transition-all duration-500 hover:bg-transparent hover:text-white hover:border-white bg-[#14052f] border rounded-full">
-                       Submit
+                    <button id="bookCall"
+                        class="w-full text-center py-4 border-zinc-600 mt-4 transition-all duration-500 hover:bg-transparent hover:text-white hover:border-white bg-[#14052f] border rounded-full">
+                        Next
                     </button>
                 </form>
             </div>
